@@ -6,6 +6,26 @@
 
 **Zerve** is a modern, powerful project manager for Windows that allows you to manage and run multiple terminal-based projects simultaneously with an elegant WPF interface.
 
+## 🔨 Build from Source
+
+If you prefer to build the application yourself instead of downloading the pre-built executable:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Beratkan15/Zerve-Multi-Terminal-Project-Manager.git
+   cd Zerve-Multi-Terminal-Project-Manager/app
+   ```
+
+2. Build the single-file executable:
+   ```bash
+   dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true
+   ```
+
+3. Find your executable at:
+   ```
+   bin/Release/net8.0-windows/win-x64/publish/Zerve.exe
+   ```
+
 ## ✨ Features
 
 ### 🎯 Project Management
