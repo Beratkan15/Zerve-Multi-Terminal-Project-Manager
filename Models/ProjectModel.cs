@@ -13,6 +13,7 @@ namespace Zerve.Models
         public string CustomId { get; set; } = string.Empty;
         public string FolderPath { get; set; } = string.Empty;
         public string Command { get; set; } = string.Empty;
+        public Guid? FolderId { get; set; } // Folder this project belongs to (null = root)
         
         public bool IsRunning
         {
