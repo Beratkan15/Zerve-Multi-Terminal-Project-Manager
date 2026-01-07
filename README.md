@@ -1,6 +1,6 @@
 # Zerve - Multi-Terminal Project Manager
 
-![Version](https://img.shields.io/badge/version-1.1-blue)
+![Version](https://img.shields.io/badge/version-1.2-blue)
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
 ![.NET](https://img.shields.io/badge/.NET-8.0-purple)
 
@@ -47,10 +47,18 @@ If you prefer to build the application yourself instead of downloading the pre-b
 - **Icon in TitleBar** - Application icon displayed next to title
 - **Responsive Layout** - Clean and intuitive interface
 
+### 📁 Folder Organization (v1.2)
+- **Folder Management** - Create custom folders to organize projects
+- **Hierarchical Navigation** - Navigate into folders to view projects
+- **Back Button** - Easy navigation back to folder list
+- **Mouse Button Support** - Use mouse back button (XButton1) to navigate
+- **Smart Organization** - Keep related projects together in folders
+
 ### 🔍 Smart Search
-- **Real-time Filtering** - Search projects by name or custom ID
+- **Real-time Filtering** - Search folders and projects by name or ID
 - **Instant Results** - Filter as you type
-- **Clear Feedback** - Shows "No projects found" when search yields no results
+- **Context-Aware** - Searches folders or projects based on current view
+- **Clear Feedback** - Shows "No results found" when search yields no results
 
 ### 🔧 Advanced Features
 - **Port Conflict Prevention** - Automatically kills process trees to free ports
@@ -66,17 +74,23 @@ If you prefer to build the application yourself instead of downloading the pre-b
 
 ## 🚀 Quick Start
 
+### v1.2 - With Folders
+
 1. **Launch Zerve** - Double-click `Zerve.exe`
-2. **Add a Project** - Click "Add Project" button
+2. **Create a Folder** - Click "Add Folder" button
+   - Enter folder name (e.g., "Web Projects", "Backend Services")
+3. **Open Folder** - Click "Open" button on the folder
+4. **Add a Project** - Click "Add Project" button
    - Enter project name
    - Set a custom ID (optional - auto-generated if empty)
    - Select project folder
    - Enter the command to run (e.g., `npm run dev`)
-3. **Run Your Project** - Click the "Run" button
-4. **View Logs** - Click "Logs" to see terminal output
-5. **Search Projects** - Use the search box to filter by name or ID
-6. **Toggle Sidebar** - Click the navigation icon to collapse/expand sidebar
-7. **Manage** - Use Stop, Restart, Edit, or Delete as needed
+5. **Run Your Project** - Click the "Run" button
+6. **View Logs** - Click "Logs" to see terminal output
+7. **Navigate Back** - Click back button or use mouse back button
+8. **Search** - Use the search box to filter folders or projects
+9. **Toggle Sidebar** - Click the navigation icon to collapse/expand sidebar
+10. **Manage** - Use Stop, Restart, Edit, or Delete as needed
 
 ## 📋 Project ID System
 
