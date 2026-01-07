@@ -1,0 +1,69 @@
+<ui:FluentWindow x:Class="Zerve.Views.LogWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        Title="Logs" 
+        Height="600" 
+        Width="900"
+        WindowStartupLocation="CenterOwner"
+        ExtendsContentIntoTitleBar="True"
+        WindowBackdropType="Mica"
+        WindowCornerPreference="Round">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Bar -->
+        <ui:TitleBar x:Name="TitleBar" Grid.Row="0" Title="Logs" ShowMaximize="True"/>
+
+        <!-- Terminal-style Log Display -->
+        <Border Grid.Row="1" 
+                Background="#0C0C0C"
+                BorderBrush="#1E1E1E"
+                BorderThickness="0"
+                Margin="0">
+            <ScrollViewer x:Name="LogScrollViewer" 
+                         VerticalScrollBarVisibility="Auto"
+                         HorizontalScrollBarVisibility="Auto"
+                         Background="Transparent"
+                         Padding="16">
+                <ItemsControl x:Name="LogItemsControl">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" 
+                                      FontFamily="Consolas, Courier New"
+                                      FontSize="13"
+                                      Foreground="#CCCCCC"
+                                      TextWrapping="NoWrap"
+                                      Margin="0,1"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Border>
+
+        <!-- Bottom Bar with Clear Button -->
+        <Border Grid.Row="2" 
+                Background="{ui:ThemeResource ControlFillColorDefaultBrush}"
+                BorderBrush="{ui:ThemeResource ControlStrokeColorDefaultBrush}"
+                BorderThickness="0,1,0,0"
+                Padding="16,12">
+            <Grid>
+                <TextBlock Text="Terminal Output" 
+                          FontSize="12"
+                          Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
+                          VerticalAlignment="Center"/>
+                <ui:Button Content="Clear Logs" 
+                          Icon="{ui:SymbolIcon Delete24}"
+                          Appearance="Secondary"
+                          HorizontalAlignment="Right"
+                          Click="ClearLogs_Click"
+                          Padding="12,6"/>
+            </Grid>
+        </Border>
+    </Grid>
+</ui:FluentWindow>
