@@ -18,6 +18,7 @@ namespace Zerve
         public readonly ProcessManager ProcessManager = new();
         private ApiServer? _apiServer;
         private ProjectsPage? _projectsPage;
+        private bool _isSidebarCollapsed = false;
 
         public MainWindow()
         {
@@ -109,6 +110,34 @@ namespace Zerve
                     _projectsPage?.UpdateUI();
                 }
             });
+        }
+
+        private void SidebarToggle_Click(object sender, RoutedEventArgs e)
+        {
+            _isSidebarCollapsed = !_isSidebarCollapsed;
+            
+            var animation = new System.Windows.Media.Animation.DoubleAnimation
+            {
+                Duration = TimeSpan.FromMilliseconds(250),
+                EasingFunction = new System.Windows.Media.Animation.CubicEase { EasingMode = System.Windows.Media.Animation.EasingMode.EaseInOut }
+            };
+
+            if (_isSidebarCollapsed)
+            {
+                // Collapse to 70px (icon only)
+                animation.To = 70;
+                ProjectsNavButton.Content = null;
+                CreditsNavButton.Content = null;
+            }
+            else
+            {
+                // Expand to 200px (icon + text)
+                animation.To = 200;
+                ProjectsNavButton.Content = "Project Manager";
+                CreditsNavButton.Content = "Credits";
+            }
+
+            SidebarBorder.BeginAnimation(System.Windows.FrameworkElement.WidthProperty, animation);
         }
 
         private void MainWindow_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
