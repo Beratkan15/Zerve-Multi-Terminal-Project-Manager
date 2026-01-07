@@ -11,6 +11,7 @@ namespace Zerve.Views
     public partial class ProjectsPage : Page
     {
         private readonly MainWindow _mainWindow;
+        private string _searchQuery = string.Empty;
 
         public ProjectsPage(MainWindow mainWindow)
         {
@@ -18,7 +19,14 @@ namespace Zerve.Views
             _mainWindow = mainWindow;
             
             AddProjectButton.Click += AddProject_Click;
+            SearchBox.TextChanged += SearchBox_TextChanged;
             
+            UpdateUI();
+        }
+
+        private void SearchBox_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            _searchQuery = SearchBox.Text?.ToLower() ?? string.Empty;
             UpdateUI();
         }
 
@@ -26,15 +34,33 @@ namespace Zerve.Views
         {
             ProjectsStackPanel.Children.Clear();
             
-            if (_mainWindow.Projects.Count == 0)
+            // Filter projects based on search query
+            var filteredProjects = _mainWindow.Projects.Where(p =>
+                string.IsNullOrEmpty(_searchQuery) ||
+                p.Name.ToLower().Contains(_searchQuery) ||
+                (!string.IsNullOrEmpty(p.CustomId) && p.CustomId.ToLower().Contains(_searchQuery))
+            ).ToList();
+            
+            if (filteredProjects.Count == 0)
             {
                 EmptyState.Visibility = Visibility.Visible;
+                
+                // Update empty state message based on search
+                var emptyTextBlock = EmptyState.Children.OfType<System.Windows.Controls.TextBlock>().FirstOrDefault();
+                if (emptyTextBlock != null && !string.IsNullOrEmpty(_searchQuery))
+                {
+                    emptyTextBlock.Text = $"No projects found matching '{_searchQuery}'";
+                }
+                else if (emptyTextBlock != null)
+                {
+                    emptyTextBlock.Text = "No projects yet";
+                }
             }
             else
             {
                 EmptyState.Visibility = Visibility.Collapsed;
                 
-                foreach (var project in _mainWindow.Projects)
+                foreach (var project in filteredProjects)
                 {
                     var card = CreateProjectCard(project);
                     ProjectsStackPanel.Children.Add(card);
@@ -47,7 +73,8 @@ namespace Zerve.Views
             var card = new Card
             {
                 Margin = new Thickness(0, 0, 0, 16),
-                Padding = new Thickness(20)
+                Padding = new Thickness(20),
+                Tag = project.Id.ToString()
             };
 
             var grid = new Grid();
