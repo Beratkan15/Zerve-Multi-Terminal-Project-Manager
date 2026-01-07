@@ -1,6 +1,6 @@
 # Zerve - Multi-Terminal Project Manager
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
+![Version](https://img.shields.io/badge/version-1.1-blue)
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
 ![.NET](https://img.shields.io/badge/.NET-8.0-purple)
 
@@ -42,9 +42,15 @@ If you prefer to build the application yourself instead of downloading the pre-b
 
 ### 🎨 Modern UI
 - **Dark Theme** - Easy on the eyes with Mica backdrop
-- **Fluent Design** - Modern WPF UI with smooth animations
-- **Navigation Sidebar** - Easy access to Projects and Credits
+- **Fluent Design** - Modern WPF UI with smooth interface
+- **Collapsible Sidebar** - Toggle between full (200px) and compact (70px) mode
+- **Icon in TitleBar** - Application icon displayed next to title
 - **Responsive Layout** - Clean and intuitive interface
+
+### 🔍 Smart Search
+- **Real-time Filtering** - Search projects by name or custom ID
+- **Instant Results** - Filter as you type
+- **Clear Feedback** - Shows "No projects found" when search yields no results
 
 ### 🔧 Advanced Features
 - **Port Conflict Prevention** - Automatically kills process trees to free ports
@@ -68,7 +74,9 @@ If you prefer to build the application yourself instead of downloading the pre-b
    - Enter the command to run (e.g., `npm run dev`)
 3. **Run Your Project** - Click the "Run" button
 4. **View Logs** - Click "Logs" to see terminal output
-5. **Manage** - Use Stop, Restart, Edit, or Delete as needed
+5. **Search Projects** - Use the search box to filter by name or ID
+6. **Toggle Sidebar** - Click the navigation icon to collapse/expand sidebar
+7. **Manage** - Use Stop, Restart, Edit, or Delete as needed
 
 ## 📋 Project ID System
 
