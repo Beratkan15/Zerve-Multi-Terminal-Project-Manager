@@ -14,6 +14,7 @@ namespace Zerve
     public partial class MainWindow : FluentWindow
     {
         public readonly List<Project> Projects = new();
+        public readonly List<Folder> Folders = new();
         public readonly DataService DataService = new();
         public readonly ProcessManager ProcessManager = new();
         private ApiServer? _apiServer;
@@ -48,10 +49,14 @@ namespace Zerve
                 );
             }
             
-            // Load projects
+            // Load projects and folders
             var projects = DataService.LoadProjects();
             Projects.Clear();
             Projects.AddRange(projects);
+
+            var folders = DataService.LoadFolders();
+            Folders.Clear();
+            Folders.AddRange(folders);
             
             // Subscribe to process events
             ProcessManager.LogReceived += ProcessManager_LogReceived;
