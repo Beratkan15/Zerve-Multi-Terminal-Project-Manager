@@ -1,0 +1,35 @@
+# MIT License with Attribution Requirement
+
+Copyright (c) 2026 Beratkan15
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+**The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.**
+
+## Additional Terms
+
+1. **Attribution Requirement**: Any distribution, modification, or derivative work 
+   of this software MUST give appropriate credit to the original creator (Beratkan15) 
+   and provide a link to the original repository:
+   https://github.com/Beratkan15/Zerve-Multi-Terminal-Project-Manager
+
+2. **Creator Rights**: Only the original creator (Beratkan15) has the right to 
+   publish official updates and releases of this software.
+
+3. **Sharing Requirement**: If you share this software or any derivative work, 
+   you MUST clearly state the name of the original creator (Beratkan15) in your 
+   distribution.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
