@@ -10,6 +10,7 @@ namespace Zerve.Services
     public class DataService
     {
         private readonly string _dataFilePath;
+        private readonly string _foldersFilePath;
 
         public DataService()
         {
@@ -19,6 +20,7 @@ namespace Zerve.Services
             );
             Directory.CreateDirectory(appDataPath);
             _dataFilePath = Path.Combine(appDataPath, "projects.json");
+            _foldersFilePath = Path.Combine(appDataPath, "folders.json");
         }
 
         public List<Project> LoadProjects()
@@ -60,6 +62,42 @@ namespace Zerve.Services
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine($"Error saving projects: {ex.Message}");
+            }
+        }
+
+        public List<Folder> LoadFolders()
+        {
+            try
+            {
+                if (File.Exists(_foldersFilePath))
+                {
+                    var json = File.ReadAllText(_foldersFilePath);
+                    var folders = JsonSerializer.Deserialize<List<Folder>>(json);
+                    return folders ?? new List<Folder>();
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error loading folders: {ex.Message}");
+            }
+
+            return new List<Folder>();
+        }
+
+        public void SaveFolders(List<Folder> folders)
+        {
+            try
+            {
+                var options = new JsonSerializerOptions
+                {
+                    WriteIndented = true
+                };
+                var json = JsonSerializer.Serialize(folders, options);
+                File.WriteAllText(_foldersFilePath, json);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error saving folders: {ex.Message}");
             }
         }
     }
