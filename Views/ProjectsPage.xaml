@@ -10,46 +10,71 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <!-- Header with Add Button -->
+        <!-- Header with Back Button and Add Button -->
         <Grid Grid.Row="0" Margin="0,0,0,20">
-            <TextBlock Text="Projects" 
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Back Button (Hidden when in root) -->
+            <ui:Button x:Name="BackButton"
+                      Grid.Column="0"
+                      Icon="{ui:SymbolIcon ArrowLeft24}"
+                      Appearance="Secondary"
+                      Margin="0,0,12,0"
+                      Padding="12,10"
+                      Click="Back_Click"
+                      Visibility="Collapsed"/>
+
+            <!-- Title -->
+            <TextBlock x:Name="PageTitle"
+                      Grid.Column="1"
+                      Text="Folders" 
                       FontSize="28" 
                       FontWeight="SemiBold"
                       Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"
                       VerticalAlignment="Center"/>
-            <ui:Button x:Name="AddProjectButton"
-                      Content="Add Project" 
-                      Icon="{ui:SymbolIcon Add24}"
+
+            <!-- Add Button -->
+            <ui:Button x:Name="AddButton"
+                      Grid.Column="2"
+                      Content="Add Folder" 
+                      Icon="{ui:SymbolIcon FolderAdd24}"
                       Appearance="Primary"
-                      HorizontalAlignment="Right"
-                      Padding="16,10"/>
+                      Padding="16,10"
+                      Click="Add_Click"/>
         </Grid>
 
         <!-- Search Box -->
         <ui:TextBox Grid.Row="1"
                    x:Name="SearchBox"
-                   PlaceholderText="Search by project name or ID..."
+                   PlaceholderText="Search..."
                    Icon="{ui:SymbolIcon Search24}"
                    ClearButtonEnabled="True"
                    Margin="0,0,0,20"/>
 
-        <!-- Projects List -->
+        <!-- Content Area (Folders or Projects) -->
         <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto">
-            <StackPanel x:Name="ProjectsStackPanel"/>
+            <StackPanel x:Name="ContentStackPanel"/>
         </ScrollViewer>
 
         <!-- Empty State -->
         <StackPanel Grid.Row="2" 
                    HorizontalAlignment="Center" 
                    VerticalAlignment="Center"
-                   x:Name="EmptyState">
+                   x:Name="EmptyState"
+                   Visibility="Collapsed">
             <ui:SymbolIcon Symbol="FolderOpen24" FontSize="64" Margin="0,0,0,16" Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"/>
-            <TextBlock Text="No projects yet" 
+            <TextBlock x:Name="EmptyStateTitle"
+                      Text="No folders yet" 
                       FontSize="20" 
                       FontWeight="SemiBold"
                       Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
                       Margin="0,0,0,8"/>
-            <TextBlock Text="Click 'Add Project' to get started" 
+            <TextBlock x:Name="EmptyStateSubtitle"
+                      Text="Click 'Add Folder' to get started" 
                       FontSize="14"
                       Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"/>
         </StackPanel>
