@@ -20,13 +20,19 @@
                           FontWeight="Bold"
                           HorizontalAlignment="Center"
                           Foreground="{ui:ThemeResource TextFillColorPrimaryBrush}"
-                          Margin="0,0,0,20"/>
+                          Margin="0,0,0,16"/>
                 
                 <TextBlock Text="Multi-Terminal Project Manager" 
                           FontSize="20"
                           HorizontalAlignment="Center"
                           Foreground="{ui:ThemeResource TextFillColorSecondaryBrush}"
-                          Margin="0,0,0,60"/>
+                          Margin="0,0,0,12"/>
+                
+                <TextBlock Text="Version 1.1" 
+                          FontSize="16"
+                          HorizontalAlignment="Center"
+                          Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
+                          Margin="0,0,0,48"/>
 
                 <!-- Creator Info -->
                 <ui:Card Padding="32" Margin="0,0,0,24">
@@ -54,13 +60,6 @@
                                   FontSize="16"/>
                     </StackPanel>
                 </ui:Card>
-
-                <!-- Version Info -->
-                <TextBlock Text="Version 1.0.0" 
-                          FontSize="14"
-                          HorizontalAlignment="Center"
-                          Foreground="{ui:ThemeResource TextFillColorTertiaryBrush}"
-                          Margin="0,24,0,0"/>
             </StackPanel>
         </Border>
     </Grid>
