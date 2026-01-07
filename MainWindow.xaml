@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
         Title="Zerve" 
+        Icon="/icon.ico"
         Height="700" 
         Width="1200"
         WindowStartupLocation="CenterScreen"
@@ -17,7 +18,23 @@
         </Grid.RowDefinitions>
 
         <!-- Title Bar -->
-        <ui:TitleBar Grid.Row="0" Title="Zerve" ShowMaximize="True"/>
+        <ui:TitleBar Grid.Row="0" 
+                    Title="Zerve"
+                    ShowMaximize="True"
+                    Padding="36,0,0,0"/>
+        
+        <!-- Icon Overlay on TitleBar -->
+        <Grid Grid.Row="0" 
+              IsHitTestVisible="False"
+              Margin="12,0,0,0"
+              HorizontalAlignment="Left"
+              VerticalAlignment="Center"
+              Height="32">
+            <Image Source="/icon.ico" 
+                   Width="16" 
+                   Height="16"
+                   VerticalAlignment="Center"/>
+        </Grid>
 
         <!-- Main Content with Sidebar -->
         <Grid Grid.Row="1">
@@ -27,31 +44,54 @@
             </Grid.ColumnDefinitions>
 
             <!-- Sidebar Navigation -->
-            <Border Grid.Column="0" 
+            <Border x:Name="SidebarBorder"
+                   Grid.Column="0" 
                    Background="{ui:ThemeResource ControlFillColorDefaultBrush}"
                    BorderBrush="{ui:ThemeResource ControlStrokeColorDefaultBrush}"
                    BorderThickness="0,0,1,0"
                    Width="200">
-                <StackPanel Margin="0,20,0,0">
-                    <ui:Button x:Name="ProjectsNavButton"
-                              Content="Project Manager"
-                              Icon="{ui:SymbolIcon Apps24}"
+                <Border.RenderTransform>
+                    <TranslateTransform x:Name="SidebarTransform"/>
+                </Border.RenderTransform>
+                
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    
+                    <!-- Toggle Button -->
+                    <ui:Button x:Name="SidebarToggleButton"
+                              Grid.Row="0"
+                              Icon="{ui:SymbolIcon Navigation24}"
                               Appearance="Transparent"
-                              HorizontalAlignment="Stretch"
-                              HorizontalContentAlignment="Left"
-                              Padding="16,12"
-                              Margin="8,0"
-                              Click="ProjectsNav_Click"/>
-                    <ui:Button x:Name="CreditsNavButton"
-                              Content="Credits"
-                              Icon="{ui:SymbolIcon Info24}"
-                              Appearance="Transparent"
-                              HorizontalAlignment="Stretch"
-                              HorizontalContentAlignment="Left"
-                              Padding="16,12"
-                              Margin="8,4,8,0"
-                              Click="CreditsNav_Click"/>
-                </StackPanel>
+                              HorizontalAlignment="Right"
+                              Margin="8,8,8,12"
+                              Click="SidebarToggle_Click"
+                              ToolTip="Toggle Sidebar"/>
+                    
+                    <!-- Navigation Buttons -->
+                    <StackPanel Grid.Row="1" Margin="0,0,0,0">
+                        <ui:Button x:Name="ProjectsNavButton"
+                                  Content="Project Manager"
+                                  Icon="{ui:SymbolIcon Apps24}"
+                                  Appearance="Transparent"
+                                  HorizontalAlignment="Stretch"
+                                  HorizontalContentAlignment="Left"
+                                  Padding="16,12"
+                                  Margin="8,0"
+                                  Click="ProjectsNav_Click"/>
+                        <ui:Button x:Name="CreditsNavButton"
+                                  Content="Credits"
+                                  Icon="{ui:SymbolIcon Info24}"
+                                  Appearance="Transparent"
+                                  HorizontalAlignment="Stretch"
+                                  HorizontalContentAlignment="Left"
+                                  Padding="16,12"
+                                  Margin="8,4,8,0"
+                                  Click="CreditsNav_Click"/>
+                    </StackPanel>
+                </Grid>
             </Border>
 
             <!-- Content Frame -->
