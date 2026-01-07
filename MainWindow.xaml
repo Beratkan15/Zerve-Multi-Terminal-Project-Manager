@@ -1,0 +1,61 @@
+<ui:FluentWindow x:Class="Zerve.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
+        Title="Zerve" 
+        Height="700" 
+        Width="1200"
+        WindowStartupLocation="CenterScreen"
+        ExtendsContentIntoTitleBar="True"
+        WindowBackdropType="Mica"
+        WindowCornerPreference="Round">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Title Bar -->
+        <ui:TitleBar Grid.Row="0" Title="Zerve" ShowMaximize="True"/>
+
+        <!-- Main Content with Sidebar -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Sidebar Navigation -->
+            <Border Grid.Column="0" 
+                   Background="{ui:ThemeResource ControlFillColorDefaultBrush}"
+                   BorderBrush="{ui:ThemeResource ControlStrokeColorDefaultBrush}"
+                   BorderThickness="0,0,1,0"
+                   Width="200">
+                <StackPanel Margin="0,20,0,0">
+                    <ui:Button x:Name="ProjectsNavButton"
+                              Content="Project Manager"
+                              Icon="{ui:SymbolIcon Apps24}"
+                              Appearance="Transparent"
+                              HorizontalAlignment="Stretch"
+                              HorizontalContentAlignment="Left"
+                              Padding="16,12"
+                              Margin="8,0"
+                              Click="ProjectsNav_Click"/>
+                    <ui:Button x:Name="CreditsNavButton"
+                              Content="Credits"
+                              Icon="{ui:SymbolIcon Info24}"
+                              Appearance="Transparent"
+                              HorizontalAlignment="Stretch"
+                              HorizontalContentAlignment="Left"
+                              Padding="16,12"
+                              Margin="8,4,8,0"
+                              Click="CreditsNav_Click"/>
+                </StackPanel>
+            </Border>
+
+            <!-- Content Frame -->
+            <Frame Grid.Column="1" x:Name="ContentFrame" NavigationUIVisibility="Hidden"/>
+        </Grid>
+    </Grid>
+</ui:FluentWindow>
